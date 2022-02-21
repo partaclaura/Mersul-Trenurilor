@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_5">
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="styleSheet">
+       <string notr="true">#LoginMenu,#Login,#Signup{
+ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #4A646C, stop: 1 #64E986);
+}
+
+#MersulTrenurilor,#Sosiri,#Plecari,#Signal{
+    background-color:  #475C7A;
+}
+
+QGroupBox{
+    background-color:  #317873;
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin-top: 1ex; 
+}
+
+#MainMenu{
+ background-color:  #685D79;
+}
+
+
+
+</string>
+      </property>
+      <widget class="QWidget" name="LoginMenu">
+       <widget class="QGroupBox" name="groupBox_menu">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>150</y>
+          <width>291</width>
+          <height>321</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Menu</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QPushButton" name="pushButton_login">
+           <property name="text">
+            <string>Log in</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_signup">
+           <property name="text">
+            <string>Sign up</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_exit">
+           <property name="text">
+            <string>Exit</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>30</y>
+          <width>611</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Century Schoolbook L</family>
+          <pointsize>48</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Mersul trenurilor</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Login">
+       <widget class="QGroupBox" name="groupBox_login">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>40</y>
+          <width>321</width>
+          <height>371</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QLabel" name="label_username">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>90</y>
+           <width>91</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>username</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_password">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>140</y>
+           <width>101</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>password</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_username">
+         <property name="geometry">
+          <rect>
+           <x>140</x>
+           <y>77</y>
+           <width>131</width>
+           <height>31</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_password">
+         <property name="geometry">
+          <rect>
+           <x>140</x>
+           <y>137</y>
+           <width>131</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_loginconnect">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>240</y>
+           <width>90</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#pushButton_loginconnect{ 
+background-color: red;
+}</string>
+         </property>
+         <property name="text">
+          <string>Log in</string>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_login">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>280</y>
+           <width>301</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>440</y>
+          <width>181</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Don't have an account?</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_toSignup">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>440</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Sign up</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_backlogin">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Back</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_logout">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>480</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Log out</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Signup">
+       <widget class="QGroupBox" name="groupBox_signup">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>40</y>
+          <width>321</width>
+          <height>371</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QLabel" name="label_username_2">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>90</y>
+           <width>58</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>username</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_password_2">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>140</y>
+           <width>58</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>password</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_username_2">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>80</y>
+           <width>113</width>
+           <height>28</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_password_2">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>130</y>
+           <width>113</width>
+           <height>28</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_signupconnect">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>210</y>
+           <width>90</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Sign up</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_signup">
+         <property name="geometry">
+          <rect>
+           <x>97</x>
+           <y>270</y>
+           <width>181</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="pushButton_backsignup">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Back</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>440</y>
+          <width>161</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Already have an account?</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_toLogin">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>430</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Log in</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="MainMenu">
+       <widget class="QPushButton" name="pushButton_backmenu">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Back</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>40</y>
+          <width>351</width>
+          <height>431</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Menu</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QPushButton" name="pushButton_astazi">
+           <property name="text">
+            <string>Mersul trenurilor</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_sosiri">
+           <property name="text">
+            <string>Sosiri</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_plecari">
+           <property name="text">
+            <string>Plecari</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_signal">
+           <property name="text">
+            <string>Signal delay</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_exit_2">
+           <property name="text">
+            <string>Exit</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="MersulTrenurilor">
+       <widget class="QPushButton" name="pushButton_backtomenu">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Back</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_titlu">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>30</y>
+          <width>58</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="tableAstazi">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>761</width>
+          <height>291</height>
+         </rect>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>10</y>
+          <width>231</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>MERSUL TRENURILOR ASTAZI</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_astazi">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>40</y>
+          <width>211</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>440</y>
+          <width>761</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Signal delay</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Train ID:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_idastazi"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>Minutes:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_minutesastazi"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_signalAstazi">
+           <property name="text">
+            <string>signal</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="pushButton_reAstazi">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>10</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Refresh</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_6">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>366</y>
+          <width>331</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QPushButton" name="pushButton_veziastazi">
+           <property name="text">
+            <string>Vezi toate</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_selectastazi">
+           <property name="text">
+            <string>Selecteaza oras</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_oras"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Sosiri">
+       <widget class="QPushButton" name="pushButton_backtomenu_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Back</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="tableSosiri">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>761</width>
+          <height>291</height>
+         </rect>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>10</y>
+          <width>231</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>SOSIRI IN URMATOAREA ORA</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>440</y>
+          <width>761</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>signal delay</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>Train ID:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_idsosiri"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>Minutes:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_minutessosiri"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_signalSosiri">
+           <property name="text">
+            <string>signal</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="label_sosiri">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>40</y>
+          <width>211</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_reSosiri">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>10</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Refresh</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_7">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>370</y>
+          <width>331</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QPushButton" name="pushButton_vezisosiri">
+           <property name="text">
+            <string>Vezi toate</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_selectsosiri">
+           <property name="text">
+            <string>Selecteaza oras</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_oras_2"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Plecari">
+       <widget class="QPushButton" name="pushButton_backtomenu_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Back</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="tablePlecari">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>761</width>
+          <height>301</height>
+         </rect>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>440</y>
+          <width>761</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>signal delay</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>Train ID:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_idplecari"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_12">
+           <property name="text">
+            <string>Minutes:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_minutesplecari"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_signalPlecari">
+           <property name="text">
+            <string>signal</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="label_plecari">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>30</y>
+          <width>211</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>10</y>
+          <width>291</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>PLECARI IN URMATOAREA ORA</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_reSosiri_2">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>10</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Refresh</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_8">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>370</y>
+          <width>331</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <widget class="QPushButton" name="pushButton_veziplecari">
+           <property name="text">
+            <string>Vezi toate</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_selectplecari">
+           <property name="text">
+            <string>Selecteaza oras</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_oras_3"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Signal">
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>160</y>
+          <width>581</width>
+          <height>201</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>signal delay</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Train ID:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_id">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Minutes:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_minutes"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_signal_2">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>signal</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="pushButton_backtomenu_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Back</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

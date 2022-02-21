@@ -1,0 +1,2 @@
+Pentru rularea aplicatiei se ruleaza clientul './client' din 'build-testtcp-Desktop-Debug'
+si serverul './server' din 'MersulTrenurilor'.

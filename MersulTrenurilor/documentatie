@@ -1,0 +1,104 @@
+SERVER
+
+int main();
+In functia main a server.cpp se realizeaza conexiunea dintre client si server prin protocolul TCP. Fiind un server concurent, 
+acesta poate comunica cu mai multe aplicatii client (utilizatori) prin intermediul primitivei fork. 
+Serverul, in functia main, asteapta o comanda sub forma de mesaj de la client, dupa care trimite mesajul primit catre functia 'to_send()'.
+Dupa prelucrarea mesajului primit de la client se va modifica variabila globala 'reply' de tipul char care va fi copiata in variabila 'msgrasp' 
+din main urmand ca aceasta sa fie trimisa catre client.
+
+void to_send(char* text);
+Functia primeste de la main un sir de caractere 'text' care reprezinta mesajul primit de server de la client.
+Sirul 'text' va fi 'spart' in cuvinte prin functia strtok din libraria 'string.h', stiind ca mesajul primit are informatii separate prin ';'.
+Astfel fiecare informatie primita va fi memorata in vectorul de cuvinte 'get_data', caruia ii se atribuie dimensiunea 3 deoarece se stie ca 
+clientul nu va trimite mai mult de 3 informatii.
+Se verifica tipul de comanda primita, care va fi intotdeauna pe pozitia 0 in get_data.
+Daca informatia este de tipul:
+-"login", atunci se apeleaza functia findUser() cu sirurile de caractere memorate pe pozitiile 1 si 2 din vector. Daca functia, care este de tip bool, retuneaza 'true' 
+atunci se modifica 'reply' prin copierea sirului "true" in aceasta. Altfel, se copie "false";
+-"signup", atunci se apeleaza functia addUser cu sirurile de caractere memorate in get_data[1] si get_data[2];
+-"mersulastazi", se apeleaza functia trainsToday() si, deoarece de aceasta data este necesara trimiterea informatiilor despre trenuri inapoi catre client, 
+se apeleaza functia getTrains();
+-"sosiri", la fel ca si pentru comanda "mersulastazi" doar ca se apeleaza prima data functia currentArrivals();
+-"plecari", la fel ca si pentru comanda "mersulastazi" doar ca se apeleaza prima data functia currentDepartures();
+-"signaldelay", atunci se apeleaza functia signalDelay cu sirurile de caractere memorate in get_data[1] si get_data[2].
+
+void getTrains()
+Se foloseste de variabilele globale 'count_trains'(de tip int, care memoreaza cate trenuri cerute de client au fost gasite in XML) 
+si requested_trains (vector de cuvinte de tip char in care se memoreaza informatiile despre fiecare tren sub 
+forma "idTren,locPlecare,locSosire,oraPlecare,oraSosire,minuteIntarziere,estimare;").
+Se parcurge fiecare sir de caractere memorat si este adaugat la reply.
+
+void signalDelay(const char* id, const char* delay)
+Functia primeste prin 'id' id-ul trenului caruia se doreste sa i se adauge o intarziere, si prin 'delay' numarul de minute intarziere.
+Deoarece numarul de minute este primit de la client sub forma de sir de caractere, se foloseste variabila 'minutes' si functia 'atoi' 
+pentru a se converti sirul in int.
+Se acceseaza fisierul XML si se cauta trenul cu id-ul primit. 
+Daca nu a mai fost semnalata o intarziere inainte, atunci se adauga elementul <intarziere> in XML cu minutele primite si se apeleaza updateEstim() cu datele primite.
+Daca a mai fost semnalata o intarziere inainte, atunci se extrage intarzierea din elementul <intarziere>, se converteste in int, si se calculeaza media acestora. 
+Media va fi memorata sub forma de sir de caractere prin variabila 'update'. Acest lucru se realizeaza prin verificarea numarului de cifre 
+(se apeleaza get_digits()) a mediei, memorata in 'minutes', dupa care se adauga fiecare cifra in 'update' sub forma de caracter. 
+Se actualizeaza elementul <intarziere> si se apeleaza updateEstim() cu id-ul primit si 'update'.
+
+void updateEstim(const char* id, const char* delay)
+Are scopul de a actualiza elementul <estim> din fisierul XML.
+Dupa ce gaseste trenul cu id-ul indicat, se extrage ora si minutele aferente sosirii intr-un sir de caractere 'data'. Din acesta se extrage ora in 'thour' 
+si minutele in 'tmin'. Se calculeaza si minutele intarziere in ore si minute ce vor fi memorate in 'dhour' si 'dmin'.
+Se calculeaza ora si minutele la care va ajunge trenul respectiv si se vor converti in char tot in 'data' cu care va fi actualizat elementul <estim>.
+
+int get_digit(int number)
+Are rolul de a returna numarul de cifre a unui numar dat.
+
+void currentArrivals()
+Se foloseste de structura 'time_t' si functiile time() si localtime() pentru a afla ora curenta. 
+Memoreaza ora si minutele in 'hour' si 'minutes'.
+Goleste variabila globala requested_trains si initializeaza count_trains cu -1 pentru a preveni transmiterea unor informatii cerute de un utilizator anterior.
+Apleleaza functia checkHour() cu 'hour', 'minutes' si sirul "statusSosire", deoarece se doresc trenurile ce sosesc in urmatoarea ora.
+
+void currentDepartures()
+Urmeaza acelasi proces ca si currentArrivals doar ca apeleaza functia checkHour() cu sirul "statusPlecare" deoarece de aceasta data sunt cerute 
+trenurile care pleaca in urmatoarea ora.
+
+void checkHour(int hour, int minutes, const char* type)
+Cauta in fisierul XML toate trenurile care fie sosesc, fie pleaca in urmatoarea ora, in functie de 'type'.
+Se extrag informatiile din elementul 'type' si se verifica daca se incadreaza in ora indicata de 'hour' si minutele 'minutes'.
+In caz afirmativ se apeleaza functia get_XMLdata() cu id-ul trenului corespunzator.
+
+void get_XMLdata(const char* id)
+Functia primeste id-ul unui tren pe care il va cauta in fisierul XML.
+Dupa ce gaseste trenul, va adauga pe pozitia count_trains (care reprezinta cate alte trenuri au fost adaugate pana acum) in requested_trains toate 
+informatiile necesare despre trenul respectiv.
+
+void trainsToday()
+Se foloseste de structura 'time_t' pentru a afla ziua curenta din saptamana. Va memora in 'today' ziua respectiva, goleste variabila globala 
+requested_trains si initializeaza count_trains cu -1 pentru a preveni transmiterea unor informatii cerute de un utilizator anterior si apeleaza 
+functia checkDay() cu variabila 'today'.
+
+void checkDay(char* day)
+Primeste ziua curenta prin 'day'.
+Parcurge trenurile, iar pentru fiecare tren parcurge nodul <zileDisponibil>, si daca gaseste 'day' printre elementele de tip <zi> atunci va apela 
+get_XMLdata() cu id-ul trenului respectiv.
+
+bool findUser(char* username, char* password)
+Daca dupa apelarea functiei searchInXML() atat cu sirul "username", cat si cu sirul "password", se va returna in ambele cazuri 'true', atunci inseamna 
+ca utilizatorul are un cont valid, si se returneaza 'true'.
+Altfel, daca ambele informatii sau una dintre ele nu sunt gasite de functia searchInXML(), se returneaza 'false'.
+
+void addUser(char* username, char* password)
+Daca utilizatorul trimite un username deja existent in fisierul XML, functia copie sirul "false" in 'reply'.
+Altfel, se apeleaza functia addUserToXML() su username-ul si parola date, si se copie sirul "true" in 'reply'.
+
+void addUserToXML(char* username, char* password)
+Functia acceseaza nodul <Users> in care va adauga un nod <User>
+in care va insera elementele <username> si <password> ce vor primi informatiile date.
+
+bool searchInXML(char* tosearch, const char* type1, const char* type2, const char* type3)
+Functia cauta informatia transmisa prin 'tosearch', in elementul <type3> din nodul <type2> al nodului <type1> si returneaza 'true' atunci cand gaseste 
+informatia cautata, sau 'false' in caz in care nu o gaseste.
+
+CLIENT
+Clientul comunica cu serverul printr-un protocol TCP implementat in functia main din connect_tcp.cpp din clasa 'connect_tcp'.
+Aceasta clasa este inclusa in programul aferent interfatei grafice ce este implementat prin clasa 'mainwindow'.
+Astfel, in mainWindow.cpp se vor prelua comenzile de la utilizatorul care interactioneaza cu UI-ul aplicatiei. In connect_tcp.cpp se vor transmite 
+comenzile prelucrate pentru a fi intelese de server si vor fi trimise catre acesta. Acest program va astepta raspunsul de la sever, iar mainWindow.cpp 
+va prelua acest raspuns si il va prelucra astfel incat sa ajunga la utilizator prin interfata grafica.
